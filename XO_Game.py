@@ -43,6 +43,13 @@ def PlayerInput(iKey):
     # Функция для проверки символов ввода от игрока
     while True:
         ValKey = input('Введите число ' + iKey + ' ?:')
+
+        # Проверка на ввод только одного символа
+        if len(ValKey) > 1:
+            print('Ошибка! Необходимо вводить только одно число!')
+            continue
+
+        # Проверка на ввод только чисел
         if ValKey in '123456789':
             ValKey = int(ValKey)
             if str(Table[ValKey - 1]) in 'XO':
@@ -51,6 +58,7 @@ def PlayerInput(iKey):
             else:
                 Table[ValKey - 1] = iKey
                 break
+        # Ошибка в случае ввода букв
         else:
            print('Ошибка! Не обходимо вводить только числа от 1 до 9')
            continue
